@@ -117,6 +117,53 @@
       color: #fff;
       font-size: 15px;
       cursor: pointer;
+  .timing-section {
+  background: #0f1f3a;
+  color: #fff;
+}
+
+.timing-title {
+  margin-bottom: 24px;
+  letter-spacing: 2px;
+}
+
+.timing-box {
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 24px;
+  padding: 28px 20px;
+}
+
+.timing-row {
+  display: grid;
+  grid-template-columns: 1fr 1px 80px;
+  align-items: center;
+  padding: 16px 0;
+}
+
+.timing-row:not(:last-child) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.timing-text {
+  font-size: 15px;
+  text-align: left;
+  padding-right: 16px;
+}
+
+.timing-row::before {
+  content: "";
+  width: 1px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.4);
+  display: block;
+}
+
+.timing-time {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  text-align: right;
+}
+
     }
   </style>
 </head>
@@ -163,15 +210,31 @@
       <h2 style="margin: 0 0 0;">28.02.2026</h2>
     </div>
 
-    <div class="section" style="background:#0f1f3a; color:#fff;">
-      <h2>ТАЙМИНГ</h2>
-      <p style="color:#eaeaea;">
-        19:00 — Сбор гостей<br>
-        19:30 — Фотограф<br>
-        20:00 — Живая музыка<br>
-        22:00 — Танцы
-      </p>
+    <div class="section timing-section">
+  <h2 class="timing-title">ТАЙМИНГ</h2>
+
+  <div class="timing-box">
+    <div class="timing-row">
+      <div class="timing-text">Сбор гостей</div>
+      <div class="timing-time">19:00</div>
     </div>
+
+    <div class="timing-row">
+      <div class="timing-text">Фотограф</div>
+      <div class="timing-time">19:30</div>
+    </div>
+
+    <div class="timing-row">
+      <div class="timing-text">Живая музыка</div>
+      <div class="timing-time">20:00</div>
+    </div>
+
+    <div class="timing-row">
+      <div class="timing-text">Танцы</div>
+      <div class="timing-time">22:00</div>
+    </div>
+  </div>
+</div>
 
     <div class="section">
       <h2>ПОДТВЕРДИТЬ ПРИСУТСТВИЕ</h2>
