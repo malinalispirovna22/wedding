@@ -480,53 +480,46 @@
     <button type="submit">Отправить</button>
   </form>
 </div>
-
-
+    
     <div class="ticket-edge"></div>
-
   </div>
 
 <script>
-  document.getElementById('rsvpForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+  const rsvpForm = document.getElementById('rsvpForm');
 
-    const name = document.getElementById('name').value.trim();
-    const dishes = document.getElementById('dishes').value.trim();
-    const attendance = document.getElementById('attendance').value;
+  if (rsvpForm) {
+    rsvpForm.addEventListener('submit', function(e) {
+      e.preventDefault();
 
-    let message = '';
+      const name = document.getElementById('name').value.trim();
+      const dishesInput = document.getElementById('dishes');
+      const attendance = document.getElementById('attendance').value;
 
-    if (attendance === 'yes') {
-      message =
-        `💍 Свадебное приглашение\n\n` +
-        `Имя: ${name}\n` +
-        `Блюда: ${dishes || 'не указаны'}\n` +
-        `Ответ: С радостью буду на ужине 🎉`;
-    } else if (attendance === 'no') {
-      message =
-        `💍 Свадебное приглашение\n\n` +
-        `Имя: ${name}\n` +
-        `Ответ: К сожалению, не смогу прийти 😔`;
-    }
+      const dishes = dishesInput ? dishesInput.value.trim() : '';
 
-    const encodedMessage = encodeURIComponent(message);
-    const username = 'spacecake22';
+      let message = '💍 Свадебное приглашение\n\n';
+      message += `Имя: ${name}\n`;
 
-    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-`Блюда: ${dishes || 'не указаны'}`
+      if (attendance === 'yes') {
+        message += `Блюда: ${dishes || 'не указаны'}\n`;
+        message += 'Ответ: С радостью буду на мероприятии 🎉';
+      } else {
+        message += 'Ответ: К сожалению, не смогу прийти 😔';
+      }
 
+      const encodedMessage = encodeURIComponent(message);
+      const username = 'spacecake22';
 
-    let url = '';
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      const url = isMobile
+        ? `tg://resolve?domain=${username}&text=${encodedMessage}`
+        : `https://t.me/${username}?text=${encodedMessage}`;
 
-    if (isMobile) {
-      url = `tg://resolve?domain=${username}&text=${encodedMessage}`;
-    } else {
-      url = `https://t.me/${username}?text=${encodedMessage}`;
-    }
-
-    window.open(url, '_blank');
-  });
+      window.open(url, '_blank');
+    });
+  }
 </script>
+
 
 <script>
   function updateCountdown() {
